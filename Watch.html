@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>watch</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100vh;
+        background: #242323;
+    }
+
+    .container {
+        position: relative;
+        background: #c45e5e;
+        width: 340px;
+        height: 340px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 25px 25px 75px #3c3636, 10px 10px 70px #2b2828, inset 5px 5px 10px #514a4a, inset 5px 5px 20px #534a4a, inset -5px -5px 15px #423a3a;
+    }
+
+    .clock {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #333131;
+        width: 290px;
+height: 290px;
+border-radius: 50%;
+        /* box-shadow: 0px 0px 19px black, 0px 11px 20px black, 5px 12px 50px black,5px 12px 44px black; */
+        box-shadow: 25px 25px 75px #151515, 5px 5px 60px #b07d7d, inset 5px 5px 10px #b57d7d, inset 5px 5px 20px #c15454, inset -5px -5px 15px #1a1818;
+        z-index: 30;
+    }
+    .main{
+        position: absolute;
+        border-radius: 50%;
+        width: 5px;
+        height: 5px;
+        border: 1px solid #ffffff;
+        background: #020202fd;
+        z-index: 200;
+    }
+    span{
+        position: absolute;
+        inset: 7px;
+        text-align: center;
+        transform: rotate(calc(30deg * var(--i)));
+        color: #ffffff91;
+    }
+    span b{
+        font-size: 1.5em;
+        opacity: 0.5;
+        font-family: Arial, Helvetica, sans-serif;
+        display: inline-block;
+        transform: rotate(calc(-30deg * var(--i)));
+    }
+    .circle{
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .circle i{
+        position: absolute;
+        width: 5px;
+        height: 50%;
+        background: var(--clr);
+        transform-origin: bottom;
+transform: scaleY(0.5);
+opacity: 0.85;
+    }
+    .circle1 i{
+        width: 2px;
+    }
+    .circle2 i{
+        width: 4px;
+    }
+    .circle1{
+        position: absolute;
+        width: 190px;
+    height: 190px;
+    border: 2px solid #00000061;
+    border-radius: 50%;
+    z-index: 10;
+    }
+    .circle2{
+        position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 2px solid #00000061;
+    border-radius: 50%;
+    z-index: 9;
+    }
+    .circle3{
+        position: absolute;
+    width: 110px;
+    height: 110px;
+    border: 2px solid #00000061;
+    border-radius: 50%;
+    z-index: 8;
+    }
+    .circle::before{
+        content: '';
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: var(--clr);
+        border-radius: 50%;
+        top: -9px;
+        box-shadow: 0 0 30px var(--clr),0 0 40px var(--clr),0 0 50px var(--clr);
+    }
+    .container::before{
+        position: absolute;
+        content: '';
+        width: 20px;
+        height: 340px;
+        background: red;
+        border-radius: 5px;
+        box-shadow: 0 0 20px red,0 0 25px red;
+        /* animation: vaibhav 2s linear infinite; */
+    }
+    .container::after{
+        position: absolute;
+        content: '';
+        width: 20px;
+        height: 340px;
+        background: #ffee00;
+        border-radius: 5px;
+        box-shadow: 0 0 20px #ffee00,0 0 25px #ffee00;
+        rotate: 90deg;
+        /* animation: vaibhav2 2s linear infinite; */
+    }
+    @keyframes vaibhav2 {
+        0%{
+            rotate: 0deg;
+        }
+        100%{
+            rotate: -360deg;
+        } 
+    }
+    @keyframes vaibhav {
+        0%{
+            rotate: 0deg;
+        }
+        100%{
+            rotate: 360deg;
+        }
+    }
+
+
+    .time{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        top: 400px;
+        width: 200px;
+        padding: 20px 0;
+        /* height: 20px; */
+        background: #333131;
+        border-radius: 29px;
+        box-shadow: 0 5px 20px #000, inset 5px 5px 15px #1f1e1e,inset -10px -10px 20px #1f1e1e;
+        font-size: 23px;
+        font-weight: 600;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    .time div i{
+        font-style: normal;
+        animation: vaibhav3 0.5s infinite;
+
+    }
+    @keyframes vaibhav3 {
+        0%{
+            color: transparent;
+        }
+        100%{
+            color: yellow;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="clock">
+            <span style="--i:1"><b>1</b></span>
+            <span style="--i:2"><b>2</b></span>
+            <span style="--i:3"><b>3</b></span>
+            <span style="--i:4"><b>4</b></span>
+            <span style="--i:5"><b>5</b></span>
+            <span style="--i:6"><b>6</b></span>
+            <span style="--i:7"><b>7</b></span>
+            <span style="--i:8"><b>8</b></span>
+            <span style="--i:9"><b>9</b></span>
+            <span style="--i:10"><b>10</b></span>
+            <span style="--i:11"><b>11</b></span>
+            <span style="--i:12"><b>12</b></span>
+
+            <div class="circle circle1" id="s" style="--clr:#00da00;"><i></i></div>
+            <div class="circle circle2" id="m" style="--clr:#fffb00;"><i></i></div>
+            <div class="circle circle3" id="h" style="--clr:#fd0505;"><i></i></div>
+            <div class="main"></div>
+        </div>
+
+        
+        <div class="time" id="clock">
+            <div style="--clr:red;">00:</div>
+            <div style="--clr:#fffb00;">00<i>:</i></div>
+            <div style="--clr:#00da00;">00 </div>
+            <div> PM </div>
+        </div>
+    </div>
+</body>
+<script>
+    let h = document.querySelector('#h')
+    let m = document.querySelector('#m')
+    let s = document.querySelector('#s')
+    setInterval(()=>{
+
+        let time = new Date();
+        let hours = time.getHours() * 30;
+    let minute = time.getMinutes() * 6;
+    let second = time.getSeconds() * 6;
+
+    h.style.transform = `rotateZ(${hours+(minute/12)}deg)`;
+    m.style.transform = `rotateZ(${minute}deg)`;
+    s.style.transform = `rotateZ(${second}deg)`;
+})
+
+setInterval(()=>{
+
+let name = document.getElementById('clock');
+let time = new Date()
+let hours = time.getHours()
+let minute = time.getMinutes()
+let second = time.getSeconds()
+let PM = "AM"
+if(second<10){
+    second = '0'+second
+}
+if(minute<10){
+    minute = '0'+minute
+}
+if(hours<10){
+    hours = '0'+hours
+}
+if(hours>12){
+    hours = hours - 12
+    PM = "PM"
+}
+name.textContent = hours + ':' + minute + ':' + second  +' '+ PM;
+})
+</script>
+</html>
