@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            background: black;
+        }
+        html,body{
+            height: 100%;
+            display: grid;
+            place-items: center;
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            position: relative;
+            /* margin-right: 150px; */
+            background: #1a1922;
+        }
+        
+        .button{
+            margin-right: 150px;
+            width: 200px;
+            height: 70px;
+            border-radius:50px ;
+            /* text-align: center; */
+        }
+        .circle{
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+        }
+    .container button ,.container span{
+        
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .container span{
+        height: 100%;
+        width: 100%;
+        background: inherit;
+    }
+    .button span{
+        border-radius: 50px;
+    }
+    .circle span{
+        border-radius: 50%;
+    }
+    /* .container span:nth-child(1){
+        filter: blur(60px);
+    } */
+    .container:hover span:nth-child(2){
+        filter: blur(14px);
+    }
+
+     .button button{
+        /* padding: 14px 73px; */
+    height: 58px;
+    width: 184px;
+        border-radius: 50px;
+        /* background-color: black; */
+        
+    }
+    .circle button{
+        height: 180px;
+        width: 180px;
+        border-radius: 50%;
+        /* padding: 75px 70px; */
+        /* background-color: black; */
+        /* font-size: larger; */
+    } 
+    .container button{
+        color: white;
+        font-weight: 800;
+        border: 0;
+        font-size: 18px;
+        /* background-color: black; */
+        /* background: transparent; */
+        z-index: 3;
+    }
+    .container:hover{
+        animation: vaibhav 1.5s linear infinite;
+        background: linear-gradient(#1ff31f,#2222fd,red);
+        }
+    @keyframes vaibhav {
+        0%{
+            filter: hue-rotate(0deg);
+        }
+        100%{
+            filter: hue-rotate(360deg);
+        }
+    }
+    @media screen and (max-width: 580px) {
+        .main{
+            display: grid;
+        }
+        .container{
+            margin: 50px 0px;
+        }
+    }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+    <div class="container button">
+        <button>HOVER ME</button>
+        <span></span>
+    </div>
+    <div class="container circle">
+        <button>HOVER ME</button>
+        <span></span>
+    </div></div>
+    <script>
+        let audio = document.getElementsByTagName('button')[0];
+        let aud = document.getElementsByTagName('button')[1];
+        function me(){
+            let music = new Audio("./vaibhav.mp3")
+            music.play();
+        }
+        audio.addEventListener("click",me);
+        aud.addEventListener("click",me);
+    </script>
+</body>
+
+</html>
